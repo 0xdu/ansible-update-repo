@@ -1,0 +1,17 @@
+[baseos_latest]
+name=Oracle Linux 8 BaseOS Latest ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL8/baseos/latest/$basearch/
+gpgcheck=0
+enabled=1
+
+[appstream]
+name=Oracle Linux 8 Application Stream ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL8/appstream/$basearch/
+gpgcheck=0
+enabled=1
+
+[UEKR7]
+name=Latest Unbreakable Enterprise Kernel Release 7 for Oracle Linux $releasever ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL8/UEKR7/$basearch/
+gpgcheck=0
+enabled=1

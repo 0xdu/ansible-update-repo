@@ -1,0 +1,23 @@
+[base]
+name=CentOS-$releasever - Base
+baseurl={{yum_nexus_repo}}/centos/$releasever/os/$basearch/
+gpgcheck=0
+enabled=1
+
+[updates]
+name=CentOS-$releasever - Updates
+baseurl={{yum_nexus_repo}}/centos/$releasever/updates/$basearch/
+gpgcheck=0
+enabled=1
+
+[extras]
+name=CentOS-$releasever - Extras
+baseurl={{yum_nexus_repo}}/centos/$releasever/extras/$basearch/
+gpgcheck=0
+enabled=1
+
+[centosplus]
+name=CentOS-$releasever - Plus
+baseurl={{yum_nexus_repo}}/centos/$releasever/centosplus/$basearch/
+gpgcheck=0
+enabled=1

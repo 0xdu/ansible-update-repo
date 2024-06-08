@@ -1,0 +1,11 @@
+[ol7_latest]
+name=Oracle Linux $releasever Latest ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL7/latest/$basearch/
+gpgcheck=0
+enabled=1
+
+[ol7_UEKR6]
+name=Latest Unbreakable Enterprise Kernel Release 6 for Oracle Linux $releasever ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL7/UEKR6/$basearch/
+gpgcheck=0
+enabled=1

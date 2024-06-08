@@ -1,0 +1,11 @@
+[baseos_latest]
+name=Oracle Linux 9 BaseOS Latest ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL9/baseos/latest/$basearch/
+gpgcheck=0
+enabled=1
+
+[appstream]
+name=Oracle Linux 9 Application Stream Packages ($basearch)
+baseurl={{yum_nexus_repo}}/repo/OracleLinux/OL9/appstream/$basearch/
+gpgcheck=0
+enabled=1

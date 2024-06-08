@@ -1,0 +1,44 @@
+---
+- name: Update yum repos
+  hosts: servers
+  become: yes
+  vars:
+    yum_nexus_repo: http://10.10.10.134:8081/repository/yum-group
+  tasks:
+    - name: Gather facts
+      ansible.builtin.setup:
+        filter: ansible_distribution ansible_distribution_major_version
+
+    - name: Backup .repo files (for CentOS/Rocky/OracleLinux)
+      when: ansible_distribution in ['CentOS', 'Rocky', 'OracleLinux']
+      command: find /etc/yum.repos.d -name '*.repo' -exec sudo mv {} {}.bak \;
+
+    - name: Copy rocky.repo to Rocky servers
+      when: ansible_distribution == 'Rocky'
+      ansible.builtin.template:
+        src: repos/rocky.repo
+        dest: /etc/yum.repos.d/rocky.repo
+
+    - name: Copy centos.repo to CentOS servers
+      when: ansible_distribution == 'CentOS'
+      ansible.builtin.template:
+        src: repos/centos.repo
+        dest: /etc/yum.repos.d/centos.repo
+
+    - name: Copy oracle7.repo to OracleLinux7 servers
+      when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == '7'
+      ansible.builtin.template:
+        src: repos/oracle7.repo
+        dest: /etc/yum.repos.d/nexus.repo
+
+    - name: Copy oracle8.repo to OracleLinux8 servers
+      when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == '8'
+      ansible.builtin.template:
+        src: repos/oracle8.repo
+        dest: /etc/yum.repos.d/nexus.repo
+
+    - name: Copy oracle9.repo to OracleLinux9 servers
+      when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == '9'
+      ansible.builtin.template:
+        src: repos/oracle9.repo
+        dest: /etc/yum.repos.d/nexus.repo
